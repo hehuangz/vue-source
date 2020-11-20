@@ -1,9 +1,10 @@
+/* @flow */
 import RouterLink from './router-link'
 import RouterView from './router-view'
 let Vue
 export default class HRouter {
   constructor (options) {
-    this.$options = options // {mode, base, routes}参数
+    this.$options = options // {mode, base, routes} 参数
 
     // 5. 路由变化，让 render 重新执行,即，方法就是将 current 设为响应式的
     Vue.util.defineReactive(this, 'current', '/')
