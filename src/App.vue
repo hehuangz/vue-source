@@ -5,6 +5,9 @@
       <router-link to="/about">About</router-link>
     </div>
     <router-view/>
+    <h1 @click="$store.commit('UPDATE_COUNT')">sync 显示count：{{$store.state.count}}</h1>
+    <h1 @click="$store.dispatch('add')">async 2s显示count：{{$store.state.count}}</h1>
+    <h1>doubleCount：{{$store.getters.doubleCount}}</h1>
   </div>
 </template>
 
