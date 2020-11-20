@@ -7,9 +7,17 @@
     <router-view/>
     <h1 @click="$store.commit('UPDATE_COUNT')">sync 显示count：{{$store.state.count}}</h1>
     <h1 @click="$store.dispatch('add')">async 2s显示count：{{$store.state.count}}</h1>
-    <h1>doubleCount：{{$store.getters.doubleCount}}</h1>
+    <!-- <h1>doubleCount：{{$store.getters.doubleCount}}</h1> -->
   </div>
 </template>
+
+<script>
+export default {
+  mounted () {
+    this.$store.state = {} // 测试是否可以修改 state
+  }
+}
+</script>
 
 <style lang="less">
 #app {
