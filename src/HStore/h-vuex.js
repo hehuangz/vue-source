@@ -9,16 +9,23 @@ class Store {
     //   data: options.state
     // })
 
-    // 6. 步骤 2 中store直接暴露出去，可以任意修改，危险，所以改为可以保护 store 的方式，利用 class 的get
+    // 5. 步骤 2 中store直接暴露出去，可以任意修改，危险，所以改为可以保护 store 的方式，利用 class 的get
     this._vm = new Vue({
       data: {
         $$state: options.state
       }
     })
 
-    // 5. dispatch 中会再次调用 commit 方法，再次调用时 this 指向改变了，所以此处绑定 this, dispatch 也顺便绑了，因为他们可以互调
+    // 6. dispatch 中会再次调用 commit 方法，再次调用时 this 指向改变了，所以此处绑定 this, dispatch 也顺便绑了，因为他们可以互调
     this.commit = this.commit.bind(this)
     this.dispatch = this.dispatch.bind(this)
+
+    // 7. 实现 getter 方法,$store.getters.doubleCount
+    // this.getters = options.getters
+    // for (const key in this.getters) {
+    //     return this.getters[key]
+    // }
+    // console.log(this, 66)
   }
 
   get state () {
